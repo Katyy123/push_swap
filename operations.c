@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 19:12:02 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/31 17:10:20 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/02 17:01:22 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,4 @@ void	ft_rrotate(t_list *lst)
 		lst = lst->next;
 	}
 	temp->content = data2;
-}
-
-void		ft_push(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*new;
-	
-	new = ft_lstnew((*lst_b)->content);//non posso semplicemente spostare l'elem ma devo crearne un altro
-	if (new == 0)
-		ft_err_free_2(*lst_a, *lst_b);
-	new->next = *lst_a;
-	*lst_a = new;
-	free(*lst_b);
-	*lst_b = (*lst_b)->next;
 }

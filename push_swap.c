@@ -6,21 +6,30 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 18:12:30 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/31 17:35:17 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/02 18:59:20 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_lst_is_sorted_(t_list *lst)
+void	ft_create_list(t_list **lst_a, t_list **lst_b, int *arr)//** perché gli devo passare il puntatore, che va modificato
 {
-	while (lst && lst->next != 0)
-	{
-		if ((int)(lst->next->content) < (int)(lst->content))
-			return (0);
-		lst = lst->next;
+	t_list	*new;
+	int		i;
+
+	i = 0;
+	while (arr[i])
+	{	
+		new = ft_lstnew(arr[i]);
+		if (new == 0)
+		{
+			free(arr);
+			ft_free_exit(*lst_a, *lst_b);
+		}
+		ft_lstadd_back(lst_a, new);
+		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int main(int argc, char **argv)

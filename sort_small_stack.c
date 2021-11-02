@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 19:08:22 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/31 17:35:20 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/02 18:59:23 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_sort_2_3(t_list **lst_a, t_list **lst_b)//quando num = 2 o 3
 		ft_execute(lst_a, lst_b, "rra");
 }
 
-void	ft_sort_4(t_list **lst_a, t_list **lst_b)//mette il numero più piccolo nella stack b
+int	ft_sort_4(t_list **lst_a, t_list **lst_b)//mette il numero più piccolo nella stack b
 {
 	int	index_min;
 
@@ -51,10 +51,10 @@ void	ft_sort_4(t_list **lst_a, t_list **lst_b)//mette il numero più piccolo nel
 	}
 	else if (index_min == 3)
 		ft_execute(lst_a, lst_b, "rra");
-	ft_execute(lst_a, lst_b, "pb");
+	return (ft_execute_push(lst_a, lst_b, "pb"));
 }
 
-void	ft_sort_5(t_list **lst_a, t_list **lst_b)//mette il numero più piccolo nella stack b
+int	ft_sort_5(t_list **lst_a, t_list **lst_b)//mette il numero più piccolo nella stack b
 {
 	int	index_min;
 
@@ -73,7 +73,7 @@ void	ft_sort_5(t_list **lst_a, t_list **lst_b)//mette il numero più piccolo nel
 	}
 	else if (index_min == 4)
 		ft_execute(lst_a, lst_b, "rra");
-	ft_execute(lst_a, lst_b, "pb");
+	return (ft_execute_push(lst_a, lst_b, "pb"));
 }
 
 void	ft_sort_small_stack(t_list **lst_a, t_list **lst_b)
@@ -85,15 +85,21 @@ void	ft_sort_small_stack(t_list **lst_a, t_list **lst_b)
 		ft_sort_2_3(lst_a, lst_b);
 	if (size == 4)
 	{
-		ft_sort_4(lst_a, lst_b);
+		if (ft_sort_4(lst_a, lst_b) == 0);
+			ft_free_exit(*lst_a, *lst_b);
 		ft_sort_2_3(lst_a, lst_b);
-		ft_execute(lst_a, lst_b, "pa");
+		if (ft_execute_push(lst_a, lst_b, "pa") == 0);
+			ft_free_exit(*lst_a, *lst_b);
 	}
 	if (size == 5)
 	{
-		ft_sort_5(lst_a, lst_b);
-		ft_sort_4(lst_a, lst_b);
-		ft_execute(lst_a, lst_b, "pa");
-		ft_execute(lst_a, lst_b, "pa");
+		if (ft_sort_5(lst_a, lst_b) == 0)
+			ft_free_exit(*lst_a, *lst_b);
+		if (ft_sort_4(lst_a, lst_b) == 0)
+			ft_free_exit(*lst_a, *lst_b);
+		if (ft_execute_push(lst_a, lst_b, "pa") == 0)
+			ft_free_exit(*lst_a, *lst_b);
+		if (ft_execute_push(lst_a, lst_b, "pa") == 0)
+			ft_free_exit(*lst_a, *lst_b);
 	}
 }
