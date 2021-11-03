@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 18:12:30 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/03 14:40:10 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 17:02:14 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,27 @@ void	ft_create_list(t_list **lst_a, t_list **lst_b, int *arr)//** perché gli de
 
 int main(int argc, char **argv)
 {
-	int		*arr;
+	//int		*arr;
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		size;
   
 	if (argc == 1)//se non ci sono args
 		return (-1);
-	arr = ft_pre_check(argc, argv);
-	int i = 0;//togli
-	printf("array in main:\n");//togli
-	while (arr[i])//togli
-	{
-		printf("%d\n", arr[i]);
-		i++;
-	}
 	stack_a = NULL;
 	stack_b = NULL;
-	ft_create_list(&stack_a, &stack_b, arr);
-	free(arr);
+	stack_a = ft_pre_check(argc, argv);
+	//arr = ft_pre_check(argc, argv);
+	//int i = 0;//togli
+	//printf("array in main:\n");//togli
+	//while (arr[i])//togli
+	//{
+		//printf("%d\n", arr[i]);
+		//i++;
+	//}
+	
+	//ft_create_list(&stack_a, &stack_b, arr);
+	//free(arr);
 	size = ft_lstsize(stack_a);
 	if (size >= 2 && size <= 5)
 		ft_sort_small_stack(&stack_a, &stack_b);

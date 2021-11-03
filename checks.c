@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:08:17 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/03 15:41:39 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 17:02:16 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,9 @@ int	*ft_check_2args(int argc, char **argv)
 int	*ft_pre_check(int argc, char **argv)
 {
 	char	**mtx;
-	int		*arr;
+	//int		*arr;
 	int		size;
+	t_list *stack_a;
 
 	if (argc == 2)//c'é un solo numero
 	{
@@ -133,25 +134,26 @@ int	*ft_pre_check(int argc, char **argv)
 			ft_putendl("Error7");//togli
 			ft_err_exit();
 		}
-		arr = ft_check_1arg(ft_mtx_size(mtx), mtx);
-		printf("arr in pre_check_1arg:\n");
-		int i = 0;//togli
-		while (arr[i])//togli
-		{
-			printf("%d\n", arr[i]);
-			i++;
-		}
+		stack_a = ft_check_1arg(ft_mtx_size(mtx), mtx);
+		//arr = ft_check_1arg(ft_mtx_size(mtx), mtx);
+		//printf("arr in pre_check_1arg:\n");
+		//int i = 0;//togli
+		//while (arr[i])//togli
+		//{
+			//printf("%d\n", arr[i]);
+			//i++;
+		//}
 	}
 	if (argc > 2)
 	{
 		arr = ft_check_2args(argc - 1, argv + 1);
-		printf("arr in pre_check_2arg:\n");
-		int i = 0;//togli
-		while (arr[i])//togli
-		{
-			printf("%d\n", arr[i]);
-			i++;
-		}
+		//printf("arr in pre_check_2arg:\n");
+		//int i = 0;//togli
+		//while (arr[i])//togli
+		//{
+			//printf("%d\n", arr[i]);
+			//i++;
+		//}
 	}
 	//if (ft_arr_size(arr) == 1)
 		//exit(0);
