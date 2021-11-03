@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 18:46:11 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/02 17:01:19 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 13:07:36 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	ft_execute_push(t_list **lst_a, t_list **lst_b, char *str)
 	{
 		new = ft_lstnew((*lst_b)->content);//non posso semplicemente spostare l'elem ma devo crearne un altro
 		if (new == 0)
+		{
+			ft_putendl("Error9");//togli
 			return(ft_error());
+		}
 		new->next = *lst_a;
 		*lst_a = new;
 		free(*lst_b);
@@ -31,7 +34,10 @@ int	ft_execute_push(t_list **lst_a, t_list **lst_b, char *str)
 	{
 		new = ft_lstnew((*lst_a)->content);
 		if (new == 0)
-			return (ft_error(0));
+		{
+			ft_putendl("Error10");//togli
+			return (ft_error());
+		}
 		new->next = *lst_b;
 		*lst_b = new;
 		free(*lst_a);

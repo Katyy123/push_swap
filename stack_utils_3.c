@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:05:27 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/02 18:59:21 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 13:08:24 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ t_list	*ft_copy_list(t_list *list)
 	{
 		new = ft_lstnew(list->content);
 		if (new == 0)
-			ft_error(0);//check
+		{
+			ft_putendl("Error12");//togli
+			ft_error();//check
+		}
 		ft_lstadd_back(&copy, new);
 		list = list->next;
 	}
@@ -53,7 +56,7 @@ void	ft_remove_elem_lst(t_list **begin_list, int num)
 	}
 }
 
-static int	ft_lst_is_sorted_(t_list *lst)
+int	ft_lst_is_sorted(t_list *lst)
 {
 	while (lst && lst->next != 0)
 	{

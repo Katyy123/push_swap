@@ -6,11 +6,11 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:45:30 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/31 14:49:16 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 12:10:11 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, int n)
 {
 	if (n == 0)
 		return (0);

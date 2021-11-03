@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:17:51 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/30 12:54:49 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 15:41:49 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ int	ft_atoi(const char *str)
 	while (str[i] >= 48 && str[i] <= 57)
 	{
 		if (ft_check_toolong_int (str[i], num, sign))
+		{
+			ft_putendl("Error1");//togli
 			ft_err_exit();
+		}
 		num = num * 10 + (str[i] - 48);
 		i++;
 	}

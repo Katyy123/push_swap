@@ -6,13 +6,13 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 17:13:22 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/02 18:59:19 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 15:14:09 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	*ft_create_sorted_arr(t_list *list)//creo un array con i numeri di lst ordinati
+int	*ft_create_sorted_arr(t_list *lst_a, t_list *lst_b)//creo un array con i numeri di lst ordinati
 {
 	t_list	*copy;
 	int		*sorted_arr;
@@ -20,15 +20,19 @@ static int	*ft_create_sorted_arr(t_list *list)//creo un array con i numeri di ls
 	int		i;
 	int		min;
 
-	copy = ft_copy_list(list);
+	copy = ft_copy_list(lst_a);
 	if (copy == NULL)
-		ft_error(0);//check
-	size = ft_lstsize(list);
+	{
+		ft_putendl("Error13");//togli
+		ft_free_err_exit(lst_a, lst_b);//check
+	}
+	size = ft_lstsize(lst_a);
 	sorted_arr = (int *)malloc(sizeof(int) * size);//creo un array di int
 	if (sorted_arr == NULL)
 	{
 		free(copy);
-		ft_error(0);//check
+		ft_putendl("Error14");//togli
+		ft_free_err_exit(lst_a, lst_b);//check
 	}
 	i = 0;
 	while (i < size)//nell'array sorted_arr metto i numeri della lista in ordine
@@ -41,9 +45,8 @@ static int	*ft_create_sorted_arr(t_list *list)//creo un array con i numeri di ls
 	return (sorted_arr);//ritorno l'array ordinato
 }
 
-static void	ft_put_index_in_lst(t_list *list, int *sorted_arr)//al posto di ogni int di list, metto l'indice di quell'int che ha nell'arr
+void	ft_put_index_in_lst(t_list *list, int *sorted_arr)//al posto di ogni int di list, metto l'indice di quell'int che ha nell'arr
 {
-	int	size;
 	int	i;
 
 	while (list)
@@ -56,15 +59,14 @@ static void	ft_put_index_in_lst(t_list *list, int *sorted_arr)//al posto di ogni
 	}
 }
 
-
-static int	ft_binary_maxnum_len(t_list *lst_a)//trova il numero di cifre in codice binario del num max
+int	ft_binary_maxnum_len(t_list *lst_a)//trova il numero di cifre in codice binario del num max
 {
 	int	size;
 	int	len;
 
 	len = 0;
 	size = ft_lstsize(lst_a);//size = numero max + 1
-	while ((size - 1) > 0)
+	while ((size) > 0)
 	{
 		size /= 2;
 		len++;

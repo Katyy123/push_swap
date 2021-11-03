@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 19:07:51 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/02 18:59:17 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 15:18:36 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ void	ft_replace_nums_in_lst(t_list *lst_a, int *sorted_arr)//rimetto in lst i nu
 	}
 }
 
-static int	ft_sort(t_list **lst_a, t_list **lst_b, int index)
+int	ft_sort(t_list **lst_a, t_list **lst_b, int index)
 {
 	int	size;
 
 	size = ft_lstsize(*lst_a);
+	printf("size lista in ft_sort: %d\n", size);//togli
 	while (size > 0)
 	{
 		if ((((*lst_a)->content >> index) & 1) == 0)//per essere 0, l'ultima cifra deve essere essere 0
@@ -57,8 +58,8 @@ void	ft_sort_big_stack(t_list **lst_a, t_list **lst_b)
 	int	len;
 	int	i;
 
-	sorted_arr = ft_create_sorted_arr(lst_a);//creo un array con i numeri di lst ordinati
-	ft_put_index_in_lst(lst_a, sorted_arr);
+	sorted_arr = ft_create_sorted_arr(*lst_a, *lst_b);//creo un array con i numeri di lst ordinati
+	ft_put_index_in_lst(*lst_a, sorted_arr);
 	len = ft_binary_maxnum_len(*lst_a);
 	i = 0;
 	while (i < len)
@@ -66,7 +67,8 @@ void	ft_sort_big_stack(t_list **lst_a, t_list **lst_b)
 		if (ft_sort(lst_a, lst_b, i) == 0)
 		{
 			free(sorted_arr);
-			ft_free_exit(*lst_a, *lst_b);
+			ft_putendl("Error16");//togli
+			ft_free_err_exit(*lst_a, *lst_b);
 		}
 		i++;
 	}

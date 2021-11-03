@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 19:07:33 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/31 17:10:35 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 13:05:47 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,15 @@ void	ft_free_lst(t_list *lst)
 	}
 }
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
-}
-
 int	ft_lst_index(t_list *list, int num)//qui scorro pointer list fino a trovare num.
 {                              //Forse c'è il rischio di perdermi il puntatore, perché non lo ritorno
 	int	i;
 
 	if (!(list))
-        ft_err_exit();
+	{
+        ft_putendl("Error8");//togli
+		ft_err_exit();
+	}
     i = 0;
 	while (list->next)
 	{

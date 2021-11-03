@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 19:08:22 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/02 18:59:23 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 13:12:07 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,39 @@ void	ft_sort_small_stack(t_list **lst_a, t_list **lst_b)
 		ft_sort_2_3(lst_a, lst_b);
 	if (size == 4)
 	{
-		if (ft_sort_4(lst_a, lst_b) == 0);
-			ft_free_exit(*lst_a, *lst_b);
+		if (ft_sort_4(lst_a, lst_b) == 0)
+		{
+			ft_putendl("Error17");//togli
+			ft_free_err_exit(*lst_a, *lst_b);
+		}
 		ft_sort_2_3(lst_a, lst_b);
-		if (ft_execute_push(lst_a, lst_b, "pa") == 0);
-			ft_free_exit(*lst_a, *lst_b);
+		if (ft_execute_push(lst_a, lst_b, "pa") == 0)
+		{
+			ft_putendl("Error18");//togli
+			ft_free_err_exit(*lst_a, *lst_b);
+		}
 	}
 	if (size == 5)
 	{
 		if (ft_sort_5(lst_a, lst_b) == 0)
-			ft_free_exit(*lst_a, *lst_b);
+		{
+			ft_putendl("Error19");//togli
+			ft_free_err_exit(*lst_a, *lst_b);
+		}
 		if (ft_sort_4(lst_a, lst_b) == 0)
-			ft_free_exit(*lst_a, *lst_b);
+		{
+			ft_putendl("Error20");//togli
+			ft_free_err_exit(*lst_a, *lst_b);
+		}
 		if (ft_execute_push(lst_a, lst_b, "pa") == 0)
-			ft_free_exit(*lst_a, *lst_b);
+		{
+			ft_putendl("Error21");//togli
+			ft_free_err_exit(*lst_a, *lst_b);
+		}
 		if (ft_execute_push(lst_a, lst_b, "pa") == 0)
-			ft_free_exit(*lst_a, *lst_b);
+		{
+			ft_putendl("Error22");//togli
+			ft_free_err_exit(*lst_a, *lst_b);
+		}
 	}
 }

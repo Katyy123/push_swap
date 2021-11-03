@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/01 17:04:24 by cfiliber          #+#    #+#              #
-#    Updated: 2021/10/30 12:55:43 by cfiliber         ###   ########.fr        #
+#    Updated: 2021/11/03 15:41:46 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,21 @@ NAME = push_swap
 
 SRCS = \
 		push_swap.c\
-		utils.c\
-		atoi.c\
 		checks.c\
-		output.c\
 		split.c\
-		error.c
+		atoi.c\
+		sort_small_stack.c\
+		sort_big_stack.c\
+		pre_big_sort.c\
+		execute.c\
+		operations.c\
+		utils.c\
+		utils_2.c\
+		stack_utils.c\
+		stack_utils_2.c\
+		stack_utils_3.c\
+		output.c\
+		error_exit.c\
 
 OBJS = $(SRCS:.c=.o)
 

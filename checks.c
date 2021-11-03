@@ -6,9 +6,16 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:08:17 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/30 19:48:38 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/03 15:41:39 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+typedef struct s_array {
+	size_t	len;
+	int		*arr;
+} t_array;
+
 
 #include "push_swap.h"
 
@@ -38,7 +45,10 @@ int	ft_check_doubles(int argc, int *arr)
 		while (j < i)
 		{
 			if (arr[j] == arr[i])
+			{
+				ft_putendl("Error2");//togli
 				ft_err_exit();
+			}
 			j++;
 		}
 		i++;
@@ -55,14 +65,20 @@ int	*ft_check_1arg(int argc, char **argv)
 	i = 0;
 	arr = malloc(sizeof(int) * (argc + 1));
 	if (!arr)
+	{
+			ft_putendl("Error3");//togli
 			ft_err_exit();
+	}
 	while (i < argc)
 	{
 		j = 0;
 		if (argv[i][j] == '+' || argv[i][j] == '-')
 			j++;
-		if (ft_isdigit(&argv[i][j]))
+		if (!(ft_isdigit(&argv[i][j])))
+		{
+			ft_putendl("Error4");//togli
 			ft_err_exit();//controlla se devo liberare la memoria di arr
+		}
 		arr[i] = ft_atoi(argv[i]);
 		i++;
 	}
@@ -81,14 +97,20 @@ int	*ft_check_2args(int argc, char **argv)
 	i = 0;
 	arr = malloc(sizeof(int) * (argc + 1));
 	if (!arr)
+	{
+			ft_putendl("Error5");//togli
 			ft_err_exit();
+	}
 	while (i < argc)
 	{
 		j = 0;
 		if (argv[i][j] == '+' || argv[i][j] == '-')
 			j++;
-		if (ft_isdigit(&argv[i][j]))
+		if (!(ft_isdigit(&argv[i][j])))
+		{
+			ft_putendl("Error6");//togli
 			ft_err_exit();
+		}
 		arr[i] = ft_atoi(argv[i]);
 		i++;
 	}
@@ -96,8 +118,6 @@ int	*ft_check_2args(int argc, char **argv)
 	ft_check_doubles(argc, arr);
 	return (arr);
 }
-
-
 
 int	*ft_pre_check(int argc, char **argv)
 {
@@ -109,11 +129,30 @@ int	*ft_pre_check(int argc, char **argv)
 	{
 		mtx = ft_split(argv[1], ' ');
 		if (mtx == NULL)//arg è vuoto o allocation failed
+		{
+			ft_putendl("Error7");//togli
 			ft_err_exit();
+		}
 		arr = ft_check_1arg(ft_mtx_size(mtx), mtx);
+		printf("arr in pre_check_1arg:\n");
+		int i = 0;//togli
+		while (arr[i])//togli
+		{
+			printf("%d\n", arr[i]);
+			i++;
+		}
 	}
 	if (argc > 2)
+	{
 		arr = ft_check_2args(argc - 1, argv + 1);
+		printf("arr in pre_check_2arg:\n");
+		int i = 0;//togli
+		while (arr[i])//togli
+		{
+			printf("%d\n", arr[i]);
+			i++;
+		}
+	}
 	//if (ft_arr_size(arr) == 1)
 		//exit(0);
 	size = 0;
