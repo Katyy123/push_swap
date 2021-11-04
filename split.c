@@ -6,13 +6,13 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 17:28:36 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/30 12:54:47 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:51:24 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		ft_word_count(char const *s, char c)
+static int	ft_word_count(char const *s, char c)
 {
 	int	w;
 	int	i;
@@ -35,10 +35,10 @@ static int		ft_word_count(char const *s, char c)
 	return (w);
 }
 
-static char		**ft_allocopy_word(char **arr, char const *s, int j, int len)
+static char	**ft_allocopy_word(char **arr, char const *s, int j, int len)
 {
-	int k;
-	int l;
+	int	k;
+	int	l;
 
 	arr[0] = malloc(sizeof(char) * (len + 1));
 	if (!(arr[0]))
@@ -55,7 +55,7 @@ static char		**ft_allocopy_word(char **arr, char const *s, int j, int len)
 	return (arr);
 }
 
-static char		**ft_body_ft(char **arr, char const *s, int c, int w)
+static char	**ft_body_ft(char **arr, char const *s, int c, int w)
 {
 	int	i;
 	int	j;
@@ -83,7 +83,7 @@ static char		**ft_body_ft(char **arr, char const *s, int c, int w)
 	return (arr);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		w;

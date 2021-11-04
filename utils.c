@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 13:59:08 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/03 13:55:14 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:58:01 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != 0)
@@ -26,9 +26,9 @@ size_t	ft_strlen(const char *s)
 
 int	ft_isdigit(char *str)
 {
-	int i;
-	int flag;
-	
+	int	i;
+	int	flag;
+
 	i = 0;
 	flag = 0;
 	while (str[i] >= 48 && str[i] <= 57)
@@ -52,9 +52,9 @@ int	ft_arr_size(int *arr)
 	return (i);
 }
 
-int ft_mtx_size(char **mtx)
+int	ft_mtx_size(char **mtx)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (mtx == NULL)

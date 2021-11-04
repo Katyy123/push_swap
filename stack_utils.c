@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 19:07:20 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/31 17:10:36 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:52:31 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	t_list	*ptr;//non serve liberare questo puntatore perché prima di return, viene fatto puntare a NULL
+	t_list	*ptr;
 	int		n;
 
 	ptr = lst;
@@ -29,9 +29,9 @@ int	ft_lstsize(t_list *lst)
 
 t_list	*ft_lstnew(int content)
 {
-	t_list *new;
+	t_list	*new;
 
-	new = malloc(sizeof(t_list *));//alloco memoria che poi libero
+	new = malloc(sizeof(t_list *));
 	if (!(new))
 		return (0);
 	new->content = content;
@@ -48,31 +48,31 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)//il pointer lst rimane puntato al primo elem. 
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
 	if (!new)
-		return ;//vedere se bisogna mettere exit, invece di return. Controlla se c'è free dopo
+		return ;
 	if (!(*lst))
 	{
 		*lst = new;
-		return ;//vedere se bisogna mettere exit, invece di return. Controlla se c'è free dopo
+		return ;
 	}
 	last = ft_lstlast(*lst);
 	last->next = new;
-	last = new;//potrebbe creare problemi per free? Forse una volta che libero new, si libera anche last
+	last = new;
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (!new)
-		return ;//vedere se bisogna mettere exit, invece di return. Controlla se c'è free dopo
+		return ;
 	if (!(*lst))
 	{
 		*lst = new;
-		return ;//vedere se bisogna mettere exit, invece di return. Controlla se c'è free dopo
+		return ;
 	}
 	new->next = *lst;
-	*lst = new;//faccio puntare new al primo elem.
+	*lst = new;
 }

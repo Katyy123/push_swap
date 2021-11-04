@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 19:07:33 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/03 13:05:47 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:54:11 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,21 @@ void	ft_free_lst(t_list *lst)
 {
 	t_list	*pointer;
 
-    while (lst)
+	while (lst)
 	{
 		pointer = lst->next;
 		free(lst);
-		lst = pointer;//alla fine puntano entrambi a NULL, quindi non serve free
+		lst = pointer;
 	}
 }
 
-int	ft_lst_index(t_list *list, int num)//qui scorro pointer list fino a trovare num.
-{                              //Forse c'è il rischio di perdermi il puntatore, perché non lo ritorno
+int	ft_lst_index(t_list *list, int num)
+{
 	int	i;
 
 	if (!(list))
-	{
-        ft_putendl("Error8");//togli
 		ft_err_exit();
-	}
-    i = 0;
+	i = 0;
 	while (list->next)
 	{
 		if (list->content == num)
@@ -44,9 +41,9 @@ int	ft_lst_index(t_list *list, int num)//qui scorro pointer list fino a trovare 
 	return (i);
 }
 
-int	ft_lst_min(t_list *list)//qui scorro pointer list fino a trovare num.
-{                          //Forse c'è il rischio di perdermi il puntatore, perché non lo ritorno
-	int	min;            //per free non ci sono problemi perché dopo libero tutto ciò che punta a un elem. della list
+int	ft_lst_min(t_list *list)
+{
+	int	min;
 
 	min = list->content;
 	while (list->next)
@@ -60,9 +57,9 @@ int	ft_lst_min(t_list *list)//qui scorro pointer list fino a trovare num.
 	return (min);
 }
 
-int	ft_lst_max(t_list *list)//qui scorro pointer list fino a trovare num.
-{                          //Forse c'è il rischio di perdermi il puntatore, perché non lo ritorno
-	int	max;            //per free non ci sono problemi perché dopo libero tutto ciò che punta a un elem. della list
+int	ft_lst_max(t_list *list)
+{
+	int	max;
 
 	max = list->content;
 	while (list->next)
