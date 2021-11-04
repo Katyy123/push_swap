@@ -6,20 +6,20 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 18:08:17 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/03 17:02:16 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/04 14:33:18 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-typedef struct s_array {
-	size_t	len;
-	int		*arr;
-} t_array;
+//typedef struct s_array {
+	//int		num;
+	//int		*arr;
+//} t_array;
 
 
 #include "push_swap.h"
 
-int	ft_arr_is_sorted(int *arr)
+/*int	ft_arr_is_sorted(int *arr)    //usa ft_lst_is_sorted
 {
 	int i;
 
@@ -31,9 +31,31 @@ int	ft_arr_is_sorted(int *arr)
 		i++;
 	}
 	return (1);
+}*/
+
+void	ft_check_doubles(t_list *stack_a, t_list *stack_b)
+{
+	t_list	*copy;
+	t_list	*start;
+
+	start = stack_a;
+	while (stack_a->next != 0)
+	{
+		copy = stack_a->next;
+		while (copy->next != 0)
+		{
+			if (copy->content == stack_a->content)
+				ft_free_err_exit(stack_a, stack_b);
+			copy = copy->next;
+		}
+		if (copy->content == stack_a->content)
+			ft_free_err_exit(stack_a, stack_b);
+		stack_a = stack_a->next;
+	}
+	stack_a = start;
 }
 
-int	ft_check_doubles(int argc, int *arr)
+/*int	ft_check_doubles(int argc, int *arr)
 {
 	int	i;
 	int	j;
@@ -44,7 +66,7 @@ int	ft_check_doubles(int argc, int *arr)
 		j = 0;
 		while (j < i)
 		{
-			if (arr[j] == arr[i])
+			//if (arr[j] == arr[i])
 			{
 				ft_putendl("Error2");//togli
 				ft_err_exit();
@@ -54,21 +76,23 @@ int	ft_check_doubles(int argc, int *arr)
 		i++;
 	}
 	return (0);
-}
+}*/
 
-int	*ft_check_1arg(int argc, char **argv)
+void	ft_check_1arg(int argc, char **argv, t_list **stack_a, t_list **stack_b)
 {
 	int	i;
 	int	j;
-	int	*arr;
+	//int	*arr;
+	int num;
+	t_list	*new;
 
 	i = 0;
-	arr = malloc(sizeof(int) * (argc + 1));
-	if (!arr)
-	{
-			ft_putendl("Error3");//togli
-			ft_err_exit();
-	}
+	//arr = malloc(sizeof(int) * (argc + 1));
+	//if (!arr)
+	//{
+			//ft_putendl("Error3");//togli
+			//ft_err_exit();
+	//}
 	while (i < argc)
 	{
 		j = 0;
@@ -79,28 +103,36 @@ int	*ft_check_1arg(int argc, char **argv)
 			ft_putendl("Error4");//togli
 			ft_err_exit();//controlla se devo liberare la memoria di arr
 		}
-		arr[i] = ft_atoi(argv[i]);
+		num = ft_atoi(argv[i]);
+		new = ft_lstnew(num);
+		if (new == 0)
+			ft_free_err_exit(*stack_a, *stack_b);
+		ft_lstadd_back(stack_a, new);
+		//arr[i] = ft_atoi(argv[i]);
 		i++;
 	}
-	arr[i] = '\0';
-	ft_check_doubles(argc, arr);
+	//arr[i] = '\0';
+	ft_check_doubles(*stack_a, *stack_b);
+	//ft_check_doubles(argc, arr);
 	ft_free_mtx(argv);
-	return (arr);
+	//return (arr);
 }
 
-int	*ft_check_2args(int argc, char **argv)
+void	ft_check_2args(int argc, char **argv, t_list **stack_a, t_list **stack_b)
 {
 	int	i;
 	int	j;
-	int	*arr;
+	//int	*arr;
+	int num;
+	t_list	*new;
 
 	i = 0;
-	arr = malloc(sizeof(int) * (argc + 1));
-	if (!arr)
-	{
-			ft_putendl("Error5");//togli
-			ft_err_exit();
-	}
+	//arr = malloc(sizeof(int) * (argc + 1));
+	//if (!arr)
+	//{
+			//ft_putendl("Error5");//togli
+			//ft_err_exit();
+	//}
 	while (i < argc)
 	{
 		j = 0;
@@ -111,20 +143,25 @@ int	*ft_check_2args(int argc, char **argv)
 			ft_putendl("Error6");//togli
 			ft_err_exit();
 		}
-		arr[i] = ft_atoi(argv[i]);
+		num = ft_atoi(argv[i]);
+		new = ft_lstnew(num);
+		if (new == 0)
+			ft_free_err_exit(*stack_a, *stack_b);
+		ft_lstadd_back(stack_a, new);
+		//arr[i] = ft_atoi(argv[i]);
 		i++;
 	}
-	arr[i] = '\0';
-	ft_check_doubles(argc, arr);
-	return (arr);
+	//arr[i] = '\0';
+	ft_check_doubles(*stack_a, *stack_b);
+	//ft_check_doubles(argc, arr);
+	//return (arr);
 }
 
-int	*ft_pre_check(int argc, char **argv)
+void	ft_check_create_lst(int argc, char **argv, t_list **stack_a, t_list **stack_b)
 {
 	char	**mtx;
 	//int		*arr;
 	int		size;
-	t_list *stack_a;
 
 	if (argc == 2)//c'é un solo numero
 	{
@@ -134,7 +171,7 @@ int	*ft_pre_check(int argc, char **argv)
 			ft_putendl("Error7");//togli
 			ft_err_exit();
 		}
-		stack_a = ft_check_1arg(ft_mtx_size(mtx), mtx);
+		ft_check_1arg(ft_mtx_size(mtx), mtx, stack_a, stack_b);
 		//arr = ft_check_1arg(ft_mtx_size(mtx), mtx);
 		//printf("arr in pre_check_1arg:\n");
 		//int i = 0;//togli
@@ -146,7 +183,7 @@ int	*ft_pre_check(int argc, char **argv)
 	}
 	if (argc > 2)
 	{
-		arr = ft_check_2args(argc - 1, argv + 1);
+		ft_check_2args(argc - 1, argv + 1, stack_a, stack_b);
 		//printf("arr in pre_check_2arg:\n");
 		//int i = 0;//togli
 		//while (arr[i])//togli
@@ -157,12 +194,15 @@ int	*ft_pre_check(int argc, char **argv)
 	}
 	//if (ft_arr_size(arr) == 1)
 		//exit(0);
-	size = 0;
-	while (arr[size])
-		size++;
+	//size = 0;
+	//while (arr[size])
+		//size++;
+	size = ft_lstsize(*stack_a);
 	if (size == 1)
 		exit(0);
-	if (ft_arr_is_sorted(arr))
+	if (ft_lst_is_sorted(*stack_a))
 		exit(0);
-	return (arr);
+	//if (ft_arr_is_sorted(arr))
+		//exit(0);
+	//return (arr);
 }

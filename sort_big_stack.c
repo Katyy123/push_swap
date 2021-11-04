@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 19:07:51 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/03 15:18:36 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:18:59 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_sort(t_list **lst_a, t_list **lst_b, int index)
 	int	size;
 
 	size = ft_lstsize(*lst_a);
-	printf("size lista in ft_sort: %d\n", size);//togli
+	//printf("size lista in ft_sort: %d\n", size);//togli
 	while (size > 0)
 	{
 		if ((((*lst_a)->content >> index) & 1) == 0)//per essere 0, l'ultima cifra deve essere essere 0

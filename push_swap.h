@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 18:15:04 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/03 12:12:27 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/04 14:32:49 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,18 @@
 typedef struct s_list
 {
 	int				content;
-	struct s_list  *next;
+	struct s_list	*next;
 }				t_list;
 
 /*push_swap.c*/
 int             main(int argc, char **argv);
-void	ft_create_list(t_list **lst_a, t_list **lst_b, int *arr);
+//void	ft_create_list(t_list **lst_a, t_list **lst_b, int *arr);
 
 /*checks.c*/
-int	*ft_pre_check(int argc, char **argv);
-int	*ft_check_1arg(int argc, char **argv);
-int	*ft_check_2args(int argc, char **argv);
-int	ft_check_doubles(int argc, int *arr);
-int	ft_arr_is_sorted(int *arr);
+void	ft_check_create_lst(int argc, char **argv, t_list **stack_a, t_list **stack_b);
+void	ft_check_1arg(int argc, char **argv, t_list **stack_a, t_list **stack_b);
+void	ft_check_2args(int argc, char **argv, t_list **stack_a, t_list **stack_b);
+void	ft_check_doubles(t_list *stack_a, t_list *stack_b);
 
 /*split.c*/
 char			**ft_split(char const *s, char c);
